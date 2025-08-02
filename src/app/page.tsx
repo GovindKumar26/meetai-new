@@ -31,6 +31,24 @@ export default function Home() {
         window.alert("Sign up successful");
       }
     });
+    
+  };
+
+  
+  const onLogin = () => {
+    authClient.signIn.email({
+      email,
+      password
+    },
+    {
+      onError: () => {
+        window.alert("Sign up failed");
+      },
+      onSuccess: () => {
+        window.alert("Sign up successful");
+      }
+    });
+    
   };
 
   if (session) {
@@ -44,6 +62,9 @@ export default function Home() {
 
 
   return (
+
+    <div className="flex flex-col gap-y-10">
+
    <div >
     <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" />
     <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
@@ -52,6 +73,16 @@ export default function Home() {
     <Button onClick={onSubmit} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
       Sign Up
     </Button>
+
+    
+    <Input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
+    <Input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+
+    <Button onClick={onLogin} className="bg-blue-500 text-white px-4 py-2 rounded mt-4">
+      Login
+    </Button>
+
+   </div>
 
    </div>
   );
